@@ -17,8 +17,9 @@ my_fruits_list = pandas.read_csv(
 my_fruits_list = my_fruits_list.set_index("Fruit")
 
 # pick list
-streamlit.multiselect("Pick some fruits", list(
+fruits_selected = streamlit.multiselect("Pick some fruits", list(
     my_fruits_list.index), ['Avocado', 'Strawberries'])
 
+fruit_to_show = my_fruits_list.loc[fruits_selected]
 # display the table
-streamlit.dataframe(my_fruits_list)
+streamlit.dataframe(fruit_to_show)
